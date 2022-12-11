@@ -5,7 +5,7 @@ using UnityEngine;
 
 [RequireComponent(typeof(CharacterController))]
 
-public class ModelController : MonoBehaviour
+public class Mathew : MonoBehaviour
 {
     CharacterController characterController;
     private Vector3 direction;

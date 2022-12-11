@@ -15,7 +15,10 @@ public class PlayerController : MonoBehaviour
     public Camera playerCamera;
     public float lookSpeed = 2.0f;
     float rotationX = 0;
- 
+    float rotationY = 0;
+    
+
+
     [HideInInspector]
     public bool canMove = true;
 
@@ -71,9 +74,17 @@ public class PlayerController : MonoBehaviour
         if (canMove)
         {
             rotationX += -Input.GetAxis("Mouse Y") * lookSpeed;
-            rotationX = Mathf.Clamp(rotationX, -10, 10);
+      
+      
+            rotationX = Mathf.Clamp(rotationX, -15, 15);
+
+
             playerCamera.transform.localRotation = Quaternion.Euler(rotationX, 0, 0);
+           
+       
             transform.rotation *= Quaternion.Euler(0, Input.GetAxis("Mouse X") * lookSpeed, 0);
+
+            
         }
     }
 }
