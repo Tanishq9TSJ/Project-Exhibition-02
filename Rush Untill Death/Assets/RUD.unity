@@ -249,7 +249,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &761030970
 GameObject:
@@ -280,7 +280,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 785693089}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &785693085
 GameObject:
@@ -296,8 +296,9 @@ GameObject:
   - component: {fileID: 785693086}
   - component: {fileID: 785693091}
   - component: {fileID: 785693090}
+  - component: {fileID: 4927979948596431590}
   m_Layer: 0
-  m_Name: Player
+  m_Name: Player1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -379,8 +380,8 @@ Transform:
   m_LocalScale: {x: 0.5, y: 1, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 761030971}
   - {fileID: 1833814019}
+  - {fileID: 761030971}
   - {fileID: 543450651852128622}
   m_Father: {fileID: 0}
   m_RootOrder: 5
@@ -423,24 +424,6 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
---- !u!1 &1083142134 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5227500317701513143, guid: c18425e4add3b704a9220ba28b983f59,
-    type: 3}
-  m_PrefabInstance: {fileID: 5227500318766952513}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1083142136
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1083142134}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c3ae5799369fba440bd82fcdbeee0f2a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1244968471
 GameObject:
   m_ObjectHideFlags: 0
@@ -734,7 +717,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1503159230 stripped
 GameObject:
@@ -845,7 +828,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 785693089}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1833814020
 MonoBehaviour:
@@ -2482,6 +2465,45 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &4927979948596431590
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 785693085}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b26d8f711a2e193418ea0873cd225d92, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myCamera: {fileID: 1833814019}
+  timer: 0
+  int_timer: 0
+  zRotation: 0
+  wantedZ: 0
+  timeSpeed: 2
+  timerToRotateZ: 0
+  mouseSensitvity: 0
+  mouseSensitvity_notAiming: 300
+  mouseSensitvity_aiming: 50
+  rotationYVelocity: 0
+  cameraXVelocity: 0
+  yRotationSpeed: 0.1
+  xCameraSpeed: 0.1
+  wantedYRotation: 0
+  currentYRotation: 0
+  wantedCameraXRotation: 0
+  currentCameraXRotation: 0
+  topAngleView: 60
+  bottomAngleView: -45
+  velocityGunFollow: {x: 0, y: 0}
+  gunWeightX: 0
+  gunWeightY: 0
+  weapon: {fileID: 0}
+  gun: {fileID: 0}
+  deltaTime: 0
+  showFps: 0
 --- !u!4 &4955052625299694553
 Transform:
   m_ObjectHideFlags: 0
@@ -2624,7 +2646,7 @@ PrefabInstance:
     - target: {fileID: 5227500317701513142, guid: c18425e4add3b704a9220ba28b983f59,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5227500317701513142, guid: c18425e4add3b704a9220ba28b983f59,
         type: 3}
@@ -2680,6 +2702,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PickUpGun
+      objectReference: {fileID: 0}
+    - target: {fileID: 5227500317701513143, guid: c18425e4add3b704a9220ba28b983f59,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c18425e4add3b704a9220ba28b983f59, type: 3}

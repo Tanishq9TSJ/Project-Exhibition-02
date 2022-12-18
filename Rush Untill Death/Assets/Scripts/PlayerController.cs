@@ -19,8 +19,8 @@ public class PlayerController : MonoBehaviour
     
 
 
-    [HideInInspector]
-    public bool canMove = true;
+      [HideInInspector]
+      public bool canMove = true;
 
     
     void Start()
