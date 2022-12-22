@@ -15,6 +15,10 @@ public class PlayerController : MonoBehaviour
     public Transform groundCheck;
     public LayerMask groundLayer;
     public Animator anim;
+    public Animator anim2;
+    public Animator anim3;
+    public AudioSource a;
+    
 
     public Camera playerCamera;
     public float lookSpeed = 2.0f;
@@ -26,10 +30,9 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         characterController = GetComponent<CharacterController>();
-
-        // Lock cursor
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+        a = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -39,7 +42,6 @@ public class PlayerController : MonoBehaviour
         float vInput = Input.GetAxis("Vertical");
 
 
-        //anim.SetFloat("hSpeed", Mathf.Abs(hInput));
 
         anim.SetFloat("Speed", vInput);
         anim.SetBool("isGrounded", isGrounded);
@@ -80,5 +82,15 @@ public class PlayerController : MonoBehaviour
             playerCamera.transform.localRotation = Quaternion.Euler(rotationX, 0, 0);
             transform.rotation *= Quaternion.Euler(0, Input.GetAxis("Mouse X") * lookSpeed, 0);
         }
+
     }
+
+    public void OnTriggerEnter(Collider other)
+    {
+        anim2.SetBool("Open", true);
+        anim3.SetBool("ButtonPress", true);
+        a.Play() ;
+    }
+  
+
 }
