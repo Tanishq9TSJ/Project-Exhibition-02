@@ -15,9 +15,9 @@ public class PlayerController : MonoBehaviour
     public Transform groundCheck;
     public LayerMask groundLayer;
     public Animator anim;
-    public Animator anim2;
+   /* public Animator anim2;
     public Animator anim3;
-    public AudioSource a;
+    public AudioSource a;*/
     
 
     public Camera playerCamera;
@@ -32,7 +32,7 @@ public class PlayerController : MonoBehaviour
         characterController = GetComponent<CharacterController>();
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
-        a = GetComponent<AudioSource>();
+        //a = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -85,12 +85,12 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    public void OnTriggerEnter(Collider other)
+   /* public void OnTriggerEnter(Collider other)
     {
         anim2.SetBool("Open", true);
         anim3.SetBool("ButtonPress", true);
         a.Play() ;
-    }
+    }*/
   
 
 }
