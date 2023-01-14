@@ -16,6 +16,10 @@ public class PhotoCapture : MonoBehaviour
 
     [Header("Photo Fader Effect")]
     [SerializeField] private Animator fadingAnimation;
+
+    [Header("Audio")]
+    [SerializeField] private AudioSource cameraAudio;
+
     private Texture2D screenCapture;
     private bool viewingPhoto;
     private void Start()
@@ -64,6 +68,7 @@ public class PhotoCapture : MonoBehaviour
 
     IEnumerator CameraFlashEffect()
     {
+        cameraAudio.Play();
         cameraFlash.SetActive(true);
 
         yield return new WaitForSeconds(flashTime);
