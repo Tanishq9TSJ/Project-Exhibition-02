@@ -2,9 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
-[RequireComponent(typeof(CharacterController))]
-
 public class PlayerController : MonoBehaviour
 {
     CharacterController characterController;
@@ -14,11 +11,8 @@ public class PlayerController : MonoBehaviour
     private float gravity = -20;
     public Transform groundCheck;
     public LayerMask groundLayer;
-    public Animator anim;
-   /* public Animator anim2;
-    public Animator anim3;
-    public AudioSource a;*/
-    
+    private AudioSource a;
+
 
     public Camera playerCamera;
     public float lookSpeed = 2.0f;
@@ -32,7 +26,8 @@ public class PlayerController : MonoBehaviour
         characterController = GetComponent<CharacterController>();
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
-        //a = GetComponent<AudioSource>();
+
+        a = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -41,26 +36,19 @@ public class PlayerController : MonoBehaviour
         float hInput = Input.GetAxis("Horizontal");
         float vInput = Input.GetAxis("Vertical");
 
-
-
-        anim.SetFloat("Speed", vInput);
-        anim.SetBool("isGrounded", isGrounded);
-        anim.SetFloat("SideWalk", hInput);
-
         direction.x = hInput * speed;
         direction.z = vInput * speed;
         direction.y += gravity * Time.deltaTime;
         direction = transform.TransformDirection(direction);
-     
+
         if (Input.GetKey(KeyCode.LeftShift))
         {
-            speed = 5f;
-            anim.SetBool("Run", true);
+            speed = 7f;
+          
         }
         else
         {
-            speed = 2f;
-            anim.SetBool("Run", false);
+            speed = 5f;
         }
 
 
@@ -69,8 +57,16 @@ public class PlayerController : MonoBehaviour
             if (Input.GetButtonDown("Jump"))
             {
                 direction.y = jumpForce;
+                a.Play();
             }
+            else
+            {
+                a.Stop();
+            }
+           
         }
+      
+
 
         characterController.Move(direction * Time.deltaTime);
 
@@ -84,13 +80,4 @@ public class PlayerController : MonoBehaviour
         }
 
     }
-
-   /* public void OnTriggerEnter(Collider other)
-    {
-        anim2.SetBool("Open", true);
-        anim3.SetBool("ButtonPress", true);
-        a.Play() ;
-    }*/
-  
-
 }

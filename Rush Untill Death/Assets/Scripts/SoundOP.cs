@@ -6,7 +6,7 @@ public class SoundOP : MonoBehaviour
 {
     private AudioSource a;
     public AudioClip clip1;
-    public AudioClip clip2;
+   // public AudioClip clip2;
     public AudioClip clip3;
    
     void Start()
@@ -68,7 +68,7 @@ public class SoundOP : MonoBehaviour
             a.Stop();
         }
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        /*if (Input.GetKeyDown(KeyCode.Space))
         {
             a.clip = clip2;
             a.Play();
@@ -77,6 +77,6 @@ public class SoundOP : MonoBehaviour
         {
             a.clip = clip2;
             a.Stop();
-        }
+        }*/
     }
 }
