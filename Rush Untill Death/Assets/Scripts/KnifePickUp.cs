@@ -6,6 +6,7 @@ public class KnifePickUp : MonoBehaviour
 {
     public GameObject knifeOnPlayer;
     public GameObject pickUpText;
+    public GameObject flash;
     
     void Start()
     {
@@ -23,6 +24,7 @@ public class KnifePickUp : MonoBehaviour
                 this.gameObject.SetActive(false);
                 knifeOnPlayer.SetActive(true);
                 pickUpText.SetActive(false);
+                flash.SetActive(false);
             }
         }
     }
