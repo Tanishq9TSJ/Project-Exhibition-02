@@ -7,12 +7,7 @@ public class KnifeAnim : MonoBehaviour
     private Vector3 direction;
     private float speed;
     public Animator anim;
-
-    void Start()
-    {
-        
-    }
-
+    public bool isAttacking = false;
     void Update()
     {
         float hInput = Input.GetAxis("Horizontal");
@@ -36,6 +31,14 @@ public class KnifeAnim : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.Mouse0))
         {
             anim.SetTrigger("Attack");
+            isAttacking = true;
+            StartCoroutine(ResetAttackBool());
         }
+    }
+
+    IEnumerator ResetAttackBool()
+    {
+        yield return new WaitForSeconds(1.0f);
+        isAttacking = false;
     }
 }
