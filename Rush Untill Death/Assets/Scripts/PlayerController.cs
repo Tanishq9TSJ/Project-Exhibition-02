@@ -28,6 +28,7 @@ public class PlayerController : MonoBehaviour
         Cursor.visible = false;
 
         a = GetComponent<AudioSource>();
+
     }
 
     void Update()
