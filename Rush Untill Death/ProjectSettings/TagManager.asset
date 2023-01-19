@@ -11,6 +11,7 @@ TagManager:
   - Dummie
   - Item
   - Button
+  - Enemy
   layers:
   - Default
   - TransparentFX
