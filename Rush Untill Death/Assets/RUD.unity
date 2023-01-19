@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 696.3379, g: 715.79297, b: 715.6035, a: 1}
+  m_IndirectSpecularColor: {r: 696.3384, g: 715.7925, b: 715.6074, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -4581,25 +4581,9 @@ MonoBehaviour:
   m_Mesh: {fileID: 2087381349}
   m_VersionIndex: 2656
   m_IsSelectable: 1
-  m_SelectedFaces: 5900000013000000
-  m_SelectedEdges:
-  - a: 338
-    b: 339
-  - a: 340
-    b: 338
-  - a: 339
-    b: 341
-  - a: 341
-    b: 340
-  - a: 76
-    b: 77
-  - a: 78
-    b: 76
-  - a: 77
-    b: 79
-  - a: 79
-    b: 78
-  m_SelectedVertices: 520100005301000054010000550100004c0000004d0000004e0000004f000000
+  m_SelectedFaces: 
+  m_SelectedEdges: []
+  m_SelectedVertices: 
 --- !u!4 &215439254
 Transform:
   m_ObjectHideFlags: 0
@@ -7454,7 +7438,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-563936
+  m_Name: pb_Mesh33578
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -8223,7 +8207,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 977603442}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 533.56, y: 100.48, z: 10.46}
+  m_LocalPosition: {x: 532.02, y: 100.48, z: 10.46}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -28408,6 +28392,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anim: {fileID: 1744658217}
+  isAttacking: 0
 --- !u!1 &1794839290
 GameObject:
   m_ObjectHideFlags: 0
