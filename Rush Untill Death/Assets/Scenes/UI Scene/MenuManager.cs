@@ -10,18 +10,13 @@ public class MenuManager : MonoBehaviour
     [Header("Volume Setting")]
     [SerializeField] private TMP_Text volumeTextValue = null;
     [SerializeField] private Slider volumeSlider = null;
-
     [SerializeField] private GameObject  confirmationPrompt = null;
 
-
-
     public string _newGameLevel;
-
     public void NewGameDialogYes()
     {
         SceneManager.LoadScene(_newGameLevel);
     }
-
     public void ExitButton()
     {
         Application.Quit();
@@ -39,12 +34,10 @@ public class MenuManager : MonoBehaviour
         PlayerPrefs.SetFloat("masaterVolume", AudioListener.volume);
         StartCoroutine(ConfirmationBox());
     }
-
     public IEnumerator ConfirmationBox()
     {
         confirmationPrompt.SetActive(true);
         yield return new WaitForSeconds(2);
         confirmationPrompt.SetActive(false);
-        
     }
 }
