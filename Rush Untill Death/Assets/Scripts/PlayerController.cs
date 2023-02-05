@@ -6,7 +6,7 @@ public class PlayerController : MonoBehaviour
 {
     CharacterController characterController;
     private Vector3 direction;
-    private float speed;
+    public  float speed;
     public float jumpForce = 10;
     private float gravity = -20;
     public Transform groundCheck;
