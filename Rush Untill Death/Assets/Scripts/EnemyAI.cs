@@ -9,27 +9,47 @@ public class EnemyAI : MonoBehaviour
     public float fov = 120f;
     public float viewDistance = 10f;
     public float wanderRadius = 7f;
+    public float loseThreshold = 5f; // Time in sec until we lose the player after we stop detecting
+    private bool isDetecting = false;
 
+    public float wanderSpeed = 1f;
+    public float chaseSpeed = 2f;
     private bool isAware = false;
+  
     private Vector3 wanderPoint;
     private NavMeshAgent agent;
-
+    public Animator anim;
+    private float loseTimer = 0f;
     public void Start()
     {
         agent = GetComponent<NavMeshAgent>();
         wanderPoint = RandomWanderPoint();
+        anim = GetComponent<Animator>();
     }
     public void Update()
     {
         if(isAware)
         {
             agent.SetDestination(Player.transform.position);
+            anim.SetBool("Aware", true);
+            agent.speed = chaseSpeed;
+            if(!isDetecting)
+            {
+                loseTimer += Time.deltaTime;
+                if(loseTimer >= loseThreshold)
+                {
+                    isAware = false;
+                    loseTimer = 0f;
+                }
+            }
         }
         else
         {
-            SearchForPlayer();
             Wander();
+            anim.SetBool("Aware", false);
+            agent.speed = wanderSpeed;
         }
+        SearchForPlayer();
     }
     public void SearchForPlayer()
     {
@@ -44,16 +64,34 @@ public class EnemyAI : MonoBehaviour
                     {
                         OnAware();
                     }
+                    else
+                    {
+                        isDetecting = false;
+                    }
                    
+                }
+                else
+                {
+                    isDetecting = false;
                 }
             
             }
+            else
+            {
+                isDetecting = false;
+            }
+        }
+        else
+        {
+            isDetecting = false;
         }
     }
 
     public void OnAware()
     {
         isAware = true;
+        isDetecting = true;
+        loseTimer = 0f;
     }
 
     public void Wander()
