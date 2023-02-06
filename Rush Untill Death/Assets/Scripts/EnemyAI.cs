@@ -8,12 +8,16 @@ public class EnemyAI : MonoBehaviour
     public Transform Player;
     public float fov = 120f;
     public float viewDistance = 10f;
+    public float wanderRadius = 7f;
+
     private bool isAware = false;
+    private Vector3 wanderPoint;
     private NavMeshAgent agent;
 
     public void Start()
     {
         agent = GetComponent<NavMeshAgent>();
+        wanderPoint = RandomWanderPoint();
     }
     public void Update()
     {
@@ -24,6 +28,7 @@ public class EnemyAI : MonoBehaviour
         else
         {
             SearchForPlayer();
+            Wander();
         }
     }
     public void SearchForPlayer()
@@ -49,5 +54,24 @@ public class EnemyAI : MonoBehaviour
     public void OnAware()
     {
         isAware = true;
+    }
+
+    public void Wander()
+    {
+        if(Vector3.Distance(transform.position, wanderPoint) < 2f)
+        {
+            wanderPoint = RandomWanderPoint();
+        }
+        else
+        {
+            agent.SetDestination(wanderPoint);
+        }
+    }
+    public Vector3 RandomWanderPoint()
+    {
+        Vector3 randomPoint =(Random.insideUnitSphere * wanderRadius) + transform.position;
+        NavMeshHit navHit;
+        NavMesh.SamplePosition(randomPoint, out navHit, wanderRadius, -1);
+        return new Vector3(navHit.position.x, transform.position.y, navHit.position.z);
     }
 }
