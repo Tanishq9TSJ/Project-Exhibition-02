@@ -20,34 +20,46 @@ public class EnemyAI : MonoBehaviour
     private NavMeshAgent agent;
     public Animator anim;
     private float loseTimer = 0f;
+
+    public AudioSource aud , aud2;
     public void Start()
     {
         agent = GetComponent<NavMeshAgent>();
         wanderPoint = RandomWanderPoint();
         anim = GetComponent<Animator>();
+        aud = GetComponent<AudioSource>();
     }
     public void Update()
     {
         if(isAware)
         {
+            aud.enabled = true;
+            aud2.enabled = false;
             agent.SetDestination(Player.transform.position);
             anim.SetBool("Aware", true);
             agent.speed = chaseSpeed;
-            if(!isDetecting)
+        
+            if (!isDetecting)
             {
                 loseTimer += Time.deltaTime;
                 if(loseTimer >= loseThreshold)
                 {
                     isAware = false;
                     loseTimer = 0f;
+                   
                 }
             }
+       
         }
         else
         {
+            aud.enabled = false;
+            aud2.enabled = true;
             Wander();
             anim.SetBool("Aware", false);
+            aud.Pause();
             agent.speed = wanderSpeed;
+            
         }
         SearchForPlayer();
     }
@@ -63,27 +75,32 @@ public class EnemyAI : MonoBehaviour
                     if(hit.transform.CompareTag("Player"))
                     {
                         OnAware();
+                  
                     }
                     else
                     {
                         isDetecting = false;
+                 
                     }
                    
                 }
                 else
                 {
                     isDetecting = false;
+            
                 }
             
             }
             else
             {
                 isDetecting = false;
+    
             }
         }
         else
         {
             isDetecting = false;
+
         }
     }
 
@@ -92,6 +109,7 @@ public class EnemyAI : MonoBehaviour
         isAware = true;
         isDetecting = true;
         loseTimer = 0f;
+ 
     }
 
     public void Wander()
@@ -99,10 +117,12 @@ public class EnemyAI : MonoBehaviour
         if(Vector3.Distance(transform.position, wanderPoint) < 2f)
         {
             wanderPoint = RandomWanderPoint();
+
         }
         else
         {
             agent.SetDestination(wanderPoint);
+
         }
     }
     public Vector3 RandomWanderPoint()
