@@ -21,7 +21,7 @@ public class EnemyAI : MonoBehaviour
     public Animator anim;
     private float loseTimer = 0f;
 
-    public AudioSource aud , aud2;
+    public  AudioSource aud , aud2;
     public void Start()
     {
         agent = GetComponent<NavMeshAgent>();
