@@ -5,7 +5,7 @@ using UnityEngine.AI;
 
 public class EnemyAI : MonoBehaviour
 {
-    public Transform Player;
+    private Transform Player ;
     public float fov = 120f;
     public float viewDistance = 10f;
     public float wanderRadius = 7f;
@@ -20,7 +20,7 @@ public class EnemyAI : MonoBehaviour
     private NavMeshAgent agent;
     public Animator anim;
     private float loseTimer = 0f;
-
+  
     public  AudioSource aud , aud2;
     public void Start()
     {
@@ -28,7 +28,8 @@ public class EnemyAI : MonoBehaviour
         wanderPoint = RandomWanderPoint();
         anim = GetComponent<Animator>();
         aud = GetComponent<AudioSource>();
-    }
+        Player = GameObject.FindWithTag("Player").transform;
+}
     public void Update()
     {
         if(isAware)
