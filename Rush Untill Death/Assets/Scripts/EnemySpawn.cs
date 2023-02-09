@@ -7,6 +7,7 @@ public class EnemySpawn : MonoBehaviour
     public GameObject enemy;
     public Transform enemyPos;
     private float repeatRate = 2.0f;
+    //public GameObject EnemyContainer;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -18,10 +19,25 @@ public class EnemySpawn : MonoBehaviour
         }
 
     }
-    void EnemySpawner()
+    void EnemySpawner(/*int nEnemy*/)
     {
         Instantiate(enemy, enemyPos.position, enemyPos.rotation);
+       /* for (int i =0; i<nEnemy; i++)
+        {
+            GameObject EnemySp = Instantiate(enemy, enemyPos.position, enemyPos.rotation);
+            EnemySp.transform.parent = EnemyContainer.transform;
+            EnemySp.name = "ZombieClone" + (i + 1);
+
+        }*/
+
     }
+
+   /* public void DestroyEnemy()
+    {
+        var Eni = new List<GameObject>();
+        foreach (Transform child in EnemyContainer.transform) Eni.Add(child.gameObject);
+        Eni.ForEach(child => Destroy(child));
+    }*/
 }
 
 

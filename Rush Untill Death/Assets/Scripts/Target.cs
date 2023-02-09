@@ -4,32 +4,36 @@ using UnityEngine;
 
 public class Target : MonoBehaviour
 {
-    public float health = 50f;
+    public float health = 30f;
     public Animator anim;
+    public GameObject Enemy;
+
+
+    private void Start()
+    {
+        Enemy = GameObject.FindGameObjectWithTag("Enemy");
+       
+        anim = GetComponent<Animator>();
+    }
 
     public void TakeDamage(float amount)
     {
         health -= amount;
         if (health <= 0f)
         {
-            // Die();
             StartCoroutine(DeathCoroutine());
-
         }
+        
     }
-
-    /*void Die()
-    {   
-       this.gameObject.SetActive(false);
-    }*/
-
+ 
     IEnumerator DeathCoroutine()
     {
         anim.SetTrigger("Die");
 
         yield return new WaitForSeconds(3f);
-        this.gameObject.SetActive(false);
 
+        Destroy(Enemy); 
+      
     }
 
 }
