@@ -19,9 +19,10 @@ public class Target : MonoBehaviour
     public void TakeDamage(float amount)
     {
         health -= amount;
-        if (health <= 0f)
+        if (health < 0f)
         {
             StartCoroutine(DeathCoroutine());
+
         }
         
     }
@@ -29,11 +30,10 @@ public class Target : MonoBehaviour
     IEnumerator DeathCoroutine()
     {
         anim.SetTrigger("Die");
-
+         
         yield return new WaitForSeconds(3f);
 
-        Destroy(Enemy); 
-      
+        Destroy(Enemy);
+          
     }
-
 }

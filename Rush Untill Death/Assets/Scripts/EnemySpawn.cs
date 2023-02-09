@@ -32,7 +32,7 @@ public class EnemySpawn : MonoBehaviour
 
     }
 
-   /* public void DestroyEnemy()
+    /*public void DestroyEnemy()
     {
         var Eni = new List<GameObject>();
         foreach (Transform child in EnemyContainer.transform) Eni.Add(child.gameObject);
