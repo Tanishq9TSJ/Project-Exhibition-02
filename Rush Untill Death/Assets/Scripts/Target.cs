@@ -11,7 +11,7 @@ public class Target : MonoBehaviour
 
     private void Start()
     {
-        Enemy = GameObject.FindGameObjectWithTag("Enemy");
+        //Enemy = GameObject.FindGameObjectWithTag("Enemy");
        
         anim = GetComponent<Animator>();
     }
@@ -19,20 +19,22 @@ public class Target : MonoBehaviour
     public void TakeDamage(float amount)
     {
         health -= amount;
-        if (health <= 0f)
+        if (health == 0f)
         {
-            StartCoroutine(DeathCoroutine());
+            //StartCoroutine(DeathCoroutine());
+            gameObject.SetActive(false);
         }
         
     }
  
     IEnumerator DeathCoroutine()
     {
+
         anim.SetTrigger("Die");
 
         yield return new WaitForSeconds(3f);
 
-        Destroy(Enemy); 
+        Enemy.SetActive(false);
       
     }
 
