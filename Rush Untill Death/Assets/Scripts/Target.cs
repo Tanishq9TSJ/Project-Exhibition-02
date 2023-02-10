@@ -11,22 +11,33 @@ public class Target : MonoBehaviour
 
     private void Start()
     {
+        //Enemy = GameObject.FindGameObjectWithTag("Enemy");
+
+        //anim = GetComponent<Animator>();
+     
+    }
+    private void Update()
+    {
         Enemy = GameObject.FindGameObjectWithTag("Enemy");
-       
         anim = GetComponent<Animator>();
     }
-
     public void TakeDamage(float amount)
     {
         health -= amount;
         if (health < 0f)
         {
             StartCoroutine(DeathCoroutine());
+            //DieOP();
 
         }
         
     }
  
+    /*private void DieOP()
+    {
+        Destroy(gameObject);
+    }*/
+
     IEnumerator DeathCoroutine()
     {
         anim.SetTrigger("Die");

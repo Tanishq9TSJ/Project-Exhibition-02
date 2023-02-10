@@ -8,12 +8,24 @@ public class HitDetection : MonoBehaviour
     public Target target;
     public float damage = 10f;
     public GameObject HitParticle;
+    private void Start()
+    {
+         target = Object.FindObjectOfType<Target>();
+    }
+    private void Update()
+    {
+        target = Object.FindObjectOfType<Target>();
+    }
     private void OnTriggerEnter(Collider other)
     {
         if(other.tag == "Enemy" && ka.isAttacking)
         {
             Instantiate(HitParticle, new Vector3(other.transform.position.x, transform.position.y, other.transform.position.z), other.transform.rotation);
-            target.TakeDamage(damage);
+            if(target != null)
+            {
+
+                target.TakeDamage(damage);
+            }
         }
     } 
  
