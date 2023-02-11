@@ -8,29 +8,41 @@ public class Target : MonoBehaviour
     public Animator anim;
     public GameObject Enemy;
 
-
     private void Start()
     {
         //Enemy = GameObject.FindGameObjectWithTag("Enemy");
 
         //anim = GetComponent<Animator>();
-     
+      
+
     }
     private void Update()
     {
-        Enemy = GameObject.FindGameObjectWithTag("Enemy");
+        //Enemy = GameObject.FindGameObjectWithTag("Enemy");
         anim = GetComponent<Animator>();
-    }
-    public void TakeDamage(float amount)
-    {
-        health -= amount;
-        if (health < 0f)
-        {
-            StartCoroutine(DeathCoroutine());
-            //DieOP();
 
+     
+    }
+    public void TakeDamage()
+    {
+
+        GameObject[] clones = GameObject.FindGameObjectsWithTag(Enemy.tag);
+
+        foreach (GameObject Eni in clones)
+        {
+            Health health = Eni.GetComponent<Health>();
+
+            //clones = GameObject.FindGameObjectsWithTag("Enemy");
+            //health -= amount;
+
+            if (health.currentHealth <= 0f)
+            {
+
+                Destroy(Eni);
+
+
+            }
         }
-        
     }
  
     /*private void DieOP()
