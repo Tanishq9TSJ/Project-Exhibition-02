@@ -6,6 +6,7 @@ public class SwitchWeapon : MonoBehaviour
 {
     public GameObject knife;
     public GameObject flash;
+    public GameObject Axe;
 
     void Update()
     {
@@ -20,6 +21,12 @@ public class SwitchWeapon : MonoBehaviour
         {
             knife.SetActive(false);
             flash.SetActive(true);
+        }
+        if(Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            Axe.SetActive(true);
+            knife.SetActive(false);
+            flash.SetActive(false);
         }
     }
 }
