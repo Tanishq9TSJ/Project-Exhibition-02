@@ -20,7 +20,8 @@ public class EnemyAI : MonoBehaviour
     private NavMeshAgent agent;
     public Animator anim;
     private float loseTimer = 0f;
-  
+
+    public float health = 60f;
     public  AudioSource aud , aud2;
     public void Start()
     {
@@ -132,5 +133,25 @@ public class EnemyAI : MonoBehaviour
         NavMeshHit navHit;
         NavMesh.SamplePosition(randomPoint, out navHit, wanderRadius, -1);
         return new Vector3(navHit.position.x, transform.position.y, navHit.position.z);
+    }
+
+    public void TakeDamage(float amount)
+    {
+        health -= amount;
+        if (health <= amount)
+        {
+            StartCoroutine(DeathCoroutine());
+        }
+
+
+    }
+    IEnumerator DeathCoroutine()
+    {
+        anim.SetTrigger("Die");
+
+        yield return new WaitForSeconds(3f);
+
+        Destroy(gameObject);
+
     }
 }

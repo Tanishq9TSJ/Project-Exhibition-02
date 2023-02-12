@@ -5,26 +5,25 @@ using UnityEngine;
 public class HitDetection : MonoBehaviour
 {
     public KnifeAnim ka;
-    public Health health;
+    public EnemyAI target;
     public float damage = 10f;
     public GameObject HitParticle;
     private void Start()
     {
-         health = Object.FindObjectOfType<Health>();
+         target = Object.FindObjectOfType<EnemyAI>();
     }
     private void Update()
     {
-        health = Object.FindObjectOfType<Health>();
+        target = Object.FindObjectOfType<EnemyAI>();
     }
     private void OnTriggerEnter(Collider other)
     {
         if(other.tag == "Enemy" && ka.isAttacking)
         {
             Instantiate(HitParticle, new Vector3(other.transform.position.x, transform.position.y, other.transform.position.z), other.transform.rotation);
-            if(health != null)
+            if(target != null)
             {
-
-               health.TakeDamage(damage);
+               target.TakeDamage(damage);
             }
         }
     } 
