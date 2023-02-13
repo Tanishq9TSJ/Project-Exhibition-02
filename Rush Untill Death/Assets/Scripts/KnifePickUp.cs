@@ -37,8 +37,10 @@ public class KnifePickUp : MonoBehaviour
     IEnumerator Objec3()
     {
         Destroy(obje2, 3f);
+
         yield return new WaitForSeconds(4f);
         pickUpText.SetActive(false);
+
         obje3.SetActive(true);
         this.gameObject.SetActive(false);
     }
