@@ -43,7 +43,6 @@ public class ObjectivesComplete : MonoBehaviour
         }
         else
         {
-
             objective1.text = "Reach The Prison";
             //objective1.color = Color.red;
         }
@@ -55,6 +54,51 @@ public class ObjectivesComplete : MonoBehaviour
         else
         {
             objective2.text = "Pick Up Weapon";
+        }
+        if(obj3 == true)
+        {
+            objective3.color = Color.green;
+            objective3.text = "Generator On";
+        }
+        else
+        {
+            objective3.text = "Turn On Generator";
+        }
+        if(obj4 == true)
+        {
+            objective4.color = Color.green;
+            objective4.text = "Mission Complete";
+        }
+        else
+        {
+            objective4.text = "Search for Evidences";
+        }
+        if(obj5 == true)
+        {
+            objective5.color = Color.green;
+            objective5.text = "Mission Complete";
+        }
+        else
+        {
+            objective5.text = "Explore Canteen Area";
+        }
+        if(obj6 == true)
+        {
+            objective6.color = Color.green;
+            objective6.text = "Lab Key Found";
+        }
+        else
+        {
+            objective6.text = "Find the Lab Key";
+        }
+        if(obj7 == true)
+        {
+            objective7.color = Color.green;
+            objective7.text = "Enter the Lab";
+        }
+        else
+        {
+            objective7.text = "Find Way to Lab";
         }
     }
 }
