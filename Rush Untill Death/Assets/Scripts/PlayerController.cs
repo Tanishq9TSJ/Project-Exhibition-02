@@ -13,7 +13,7 @@ public class PlayerController : MonoBehaviour
     public LayerMask groundLayer;
     private AudioSource a;
 
-
+    public float health = 30f;
     public Camera playerCamera;
     public float lookSpeed = 2.0f;
     float rotationX = 0;
@@ -79,6 +79,16 @@ public class PlayerController : MonoBehaviour
             playerCamera.transform.localRotation = Quaternion.Euler(rotationX, 0, 0);
             transform.rotation *= Quaternion.Euler(0, Input.GetAxis("Mouse X") * lookSpeed, 0);
         }
+
+    }
+    public void PlayerDamage(float amount)
+    {
+        health -= amount;
+        if (health <= amount)
+        {
+            Destroy(gameObject);
+        }
+
 
     }
 }

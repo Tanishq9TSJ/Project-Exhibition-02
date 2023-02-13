@@ -4,24 +4,35 @@ using UnityEngine;
 
 public class EnemySpawn : MonoBehaviour
 {
-    public GameObject enemy;
-    public Transform enemyPos;
-    private float repeatRate = 2.0f;
+    public GameObject[] enemy;
+    //public Transform enemyPos;
+    //private float repeatRate = 2.0f;
     //public GameObject EnemyContainer;
-
+    private void Start()
+    {
+        for (int i = 0; i < enemy.Length; i++)
+            enemy[i].SetActive(false);
+    }
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Player")
         {
+            for(int i = 0; i < enemy.Length; i++)
+            enemy[i].SetActive(true);
+            Destroy(gameObject, 3);
+
+        }
+       /* if (other.gameObject.tag == "Player")
+        {
             InvokeRepeating("EnemySpawner", 0.5f, repeatRate);
             Destroy(gameObject, 11);
             gameObject.GetComponent<BoxCollider>().enabled = false;
-        }
+        }*/
 
     }
-    void EnemySpawner(/*int nEnemy*/)
-    {
-        Instantiate(enemy, enemyPos.position, enemyPos.rotation);
+   // void EnemySpawner(/*int nEnemy*/)
+   // {
+       // Instantiate(enemy, enemyPos.position, enemyPos.rotation);
        /* for (int i =0; i<nEnemy; i++)
         {
             GameObject EnemySp = Instantiate(enemy, enemyPos.position, enemyPos.rotation);
@@ -30,7 +41,7 @@ public class EnemySpawn : MonoBehaviour
 
         }*/
 
-    }
+   // }*/
 
     /*public void DestroyEnemy()
     {

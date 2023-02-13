@@ -15,12 +15,14 @@ public class SwitchWeapon : MonoBehaviour
         {
             knife.SetActive(true);
             flash.SetActive(false);
+            Axe.SetActive(false);
         }
 
         if(Input.GetKeyDown(KeyCode.F))
         {
             knife.SetActive(false);
             flash.SetActive(true);
+            Axe.SetActive(false);
         }
         if(Input.GetKeyDown(KeyCode.Alpha2))
         {
