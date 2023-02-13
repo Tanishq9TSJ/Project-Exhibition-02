@@ -27,7 +27,6 @@ public class Objectives1 : MonoBehaviour
         yield return new WaitForSeconds(4f);
 
         obje2.SetActive(true);
-        this.gameObject.SetActive(false);
     }
    
 }
